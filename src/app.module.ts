@@ -3,12 +3,16 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 import { mongooseConfig } from './config/mongoose.config';
+import { UsersModule } from './users/users.module';
 
 @Module({
 	imports: [
 		ConfigModule.forRoot({isGlobal: true}),
-		MongooseModule.forRootAsync(mongooseConfig)
+		MongooseModule.forRootAsync(mongooseConfig),
+		AuthModule,
+		UsersModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
