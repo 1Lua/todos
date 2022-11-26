@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { mongooseConfig } from './config/mongoose.config';
+import { TodosModule } from './todos/todos.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -13,6 +14,7 @@ import { UsersModule } from './users/users.module';
 		MongooseModule.forRootAsync(mongooseConfig),
 		AuthModule,
 		UsersModule,
+		TodosModule
 	],
 	controllers: [AppController],
 	providers: [AppService],

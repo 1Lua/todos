@@ -4,7 +4,7 @@ import { UsersService } from "../../users/user.service";
 import { SignInDto } from "../dtos/sigh-in.dto";
 import { SignUpDto } from "../dtos/sign-up.dto";
 import { Token } from "../dtos/token.dto";
-import { AuthException } from "./auth.filter";
+import { AuthException } from "../auth.filter";
 import { JwtService } from "./jwt.service";
 import { PasswordsService } from "./passwords.service";
 

@@ -1,6 +1,7 @@
 import { forwardRef, Module } from "@nestjs/common";
 import { UsersModule } from "../users/users.module";
 import { AuthController } from "./auth.controller";
+import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./services/auth.service";
 import { JwtService } from "./services/jwt.service";
 import { PasswordsService } from "./services/passwords.service";
@@ -12,7 +13,8 @@ import { PasswordsService } from "./services/passwords.service";
     providers: [
         JwtService,
         PasswordsService,
-        AuthService
+        AuthService,
+        AuthGuard,
     ],
     controllers: [
         AuthController
@@ -20,6 +22,7 @@ import { PasswordsService } from "./services/passwords.service";
     exports: [
         JwtService,
         PasswordsService,
+        AuthGuard
     ]
 })
 export class AuthModule {}

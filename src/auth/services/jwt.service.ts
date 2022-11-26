@@ -5,6 +5,7 @@ import {v4 as uuid} from "uuid"
 import * as fs from "fs"
 
 import { Token } from "../dtos/token.dto";
+import { AuthException } from "../auth.filter";
 
 const DEFAULT_TOKEN_TTL = 3600
 const DEFAULT_ALGORITHM = "RS256"
@@ -47,13 +48,13 @@ export class JwtService {
         try {
             verify(token, this._jwtPublicKey, { algorithms: [this._alg] })
         } catch (err) {
-            throw new Error('Token didnt verified')
+            throw new AuthException('Token didnt verified')
         }
 
         const parsedToken = decode(token, { json: true })
 
         if (parsedToken == null) {
-            throw new Error('Token didnt parsed')
+            throw new AuthException('Token didnt parsed')
         }
         return parsedToken
     }
